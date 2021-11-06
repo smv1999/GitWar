@@ -1,6 +1,6 @@
 document.getElementById("submit").addEventListener("click", onFormSubmit);
 const githubRootURL = "https://api.github.com/users/";
-async function onFormSubmit() {
+function onFormSubmit() {
   document.getElementById("existerror1").style.display = "none";
   document.getElementById("existerror2").style.display = "none";
   document.getElementById("mandatoryerror1").style.display = "none";
@@ -9,7 +9,7 @@ async function onFormSubmit() {
   var username2 = document.getElementById("player2").value;
   if (!username1 == "" && !username2 == "") {
     var validFlag = true;
-    await fetch(githubRootURL + username1)
+    fetch(githubRootURL + username1)
       .then((data) => data.json())
       .then((user1Data) => {
         fetch(githubRootURL + username2)
@@ -27,105 +27,80 @@ async function onFormSubmit() {
               let html = ``;
               var total_score1 = user1Data.followers + user1Data.public_repos;
               var total_score2 = user2Data.followers + user2Data.public_repos;
-              fetch(user1Data.repos_url)
-                .then((data) => data.json())
-                .then((user1Repos) => {
-                  user1Repos.forEach((repo) => {
-                    fetch(repo.stargazers_url)
-                      .then((data) => data.json())
-                      .then((starredUsers) => {
-                        total_score1 += starredUsers.length * 3;
-                        fetch(repo.forks_url)
-                          .then((data) => data.json())
-                          .then((forkedUsers) => {
-                            total_score1 += forkedUsers.length * 5;
-                            html += `
-                                <div class="card">
-                                <div class="flex-container">
-                                    <div class="main-flex-container">
-                                        <div class="flex card-header">
-                                        <h4 class="logo">
-                                            <img src="${user1Data.avatar_url}" alt="${user1Data.login}" class="logo-icon" />
-                                            ${user1Data.name} ${total_score1}
-                                        </h4>
-                                        </div>                           
-                                    </div>
-                                    <div class="main-flex-container">
-                                      <div class="flex card-header">
-                                      <h4>
-                                        Public Repos: ${user1Data.public_repos}
-                                      </h4>
-                                      </div>                           
-                                  </div>
-                                    <div class="main-flex-container">
-                                        <div class="flex card-header">
-                                        <h4>
-                                          Followers: ${user1Data.followers}
-                                      </h4>
-                                      </div>    
-                                      <div class="flex card-header">
-                                        <h4>
-                                            Following: ${user1Data.following}
-                                        </h4>
-                                        </div>                      
-                                    </div>
-                                  
-                                </div>
+              html += `
+                    <div class="card">
+                    <div class="flex-container">
+                        <div class="main-flex-container">
+                            <div class="flex card-header">
+                            <h4 class="logo">
+                                <img src="${user1Data.avatar_url}" alt="${user1Data.login}" class="logo-icon" />
+                                ${user1Data.name} 
+                            </h4>
+                            </div>                           
+                        </div>
+                        <div class="main-flex-container">
+                          <div class="flex card-header">
+                          <h4>
+                            Public Repos: ${user1Data.public_repos}
+                          </h4>
+                          </div>
+                          <div class="flex card-header">
+                          <h4>
+                              Score: ${total_score1 > total_score2 ? total_score1 + " (Winner 🥳)" : total_score1 + " (Loser 😔)"}
+                          </h4>
+                          </div>                           
+                      </div>
+                        <div class="main-flex-container">
+                            <div class="flex card-header">
+                            <h4>
+                              Followers: ${user1Data.followers}
+                          </h4>
+                          </div>    
+                          <div class="flex card-header">
+                            <h4>
+                                Following: ${user1Data.following}
+                            </h4>
+                            </div>                      
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="flex-container">
+                        <div class="main-flex-container">
+                            <div class="flex card-header">
+                            <h4 class="logo">
+                                <img src="${user2Data.avatar_url}" alt="${user2Data.login}" class="logo-icon" />
+                                ${user2Data.name}
+                            </h4>
                             </div>
-                          `;
-                          });
-                      });
-                  });
-                });
-              fetch(user2Data.repos_url)
-                .then((data) => data.json())
-                .then((user2Repos) => {
-                  user2Repos.forEach((repo) => {
-                    fetch(repo.stargazers_url)
-                      .then((data) => data.json())
-                      .then((starredUsers) => {
-                        total_score2 += starredUsers.length * 3;
-                        fetch(repo.forks_url)
-                          .then((data) => data.json())
-                          .then((forkedUsers) => {
-                            total_score2 += forkedUsers.length * 5;
-                            html += `
-                                <div class="card">
-                                <div class="flex-container">
-                                    <div class="main-flex-container">
-                                        <div class="flex card-header">
-                                        <h4 class="logo">
-                                            <img src="${user2Data.avatar_url}" alt="${user2Data.login}" class="logo-icon" />
-                                            ${user2Data.name} ${total_score2}
-                                        </h4>
-                                        </div>
-                                    </div>
-                                    <div class="main-flex-container">
-                                      <div class="flex card-header">
-                                      <h4>
-                                        Public Repos: ${user2Data.public_repos}
-                                      </h4>
-                                      </div>
-                                  </div>
-                                    <div class="main-flex-container">
-                                      <div class="flex card-header">
-                                      <h4>
-                                        Followers: ${user2Data.followers}
-                                    </h4>
-                                    </div>
-                                  <div class="flex card-header">
-                                    <h4>
-                                        Following: ${user2Data.following}
-                                    </h4>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                          `;
-                          });
-                      });
-                  });
-                });
+                        </div>
+                        <div class="main-flex-container">
+                          <div class="flex card-header">
+                          <h4>
+                            Public Repos: ${user2Data.public_repos}
+                          </h4>
+                          </div>
+                          <div class="flex card-header">
+                          <h4>
+                            Score: ${total_score2 > total_score1 ? total_score2 + " (Winner 🥳)" : total_score2 + " (Loser 😔)"}
+                          </h4>
+                          </div> 
+                      </div>
+                        <div class="main-flex-container">
+                          <div class="flex card-header">
+                          <h4>
+                            Followers: ${user2Data.followers}
+                        </h4>
+                        </div>
+                      <div class="flex card-header">
+                        <h4>
+                            Following: ${user2Data.following}
+                        </h4>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            `;
 
               document.body.insertAdjacentHTML("beforeend", html);
             }
