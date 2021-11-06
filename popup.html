@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitWar</title>
+    <style>
+      html,
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 14px;
+        min-height: 180px;
+        width: 400px;
+        margin: 0;
+        padding: 0;
+      }
+      h1 {
+        font-family: "Menlo", monospace;
+        font-size: 22px;
+        font-weight: 400;
+        margin: 0;
+        color: #2f5876;
+      }
+      a:link,
+      a:visited {
+        color: #2f5876;
+        outline: 0;
+        text-decoration: none;
+      }
+      img {
+        width: 30px;
+      }
+      .modal-header {
+        align-items: center;
+        border-bottom: 0.5px solid #dadada;
+        width: 100%;
+      }
+      .modal-content {
+        padding: 0 22px;
+        align-items: center;
+      }
+      .modal-footer {
+        border-top: 0.5px solid #dadada;
+        height: 50px;
+        width: 100%;
+      }
+      .logo {
+        padding: 16px;
+      }
+      .logo-icon {
+        vertical-align: text-bottom;
+        margin-right: 12px;
+      }
+      .version {
+        color: #444;
+        font-size: 16px;
+      }
+      .flex-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 22px;
+      }
+      .flex {
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out;
+        width: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="modal-header">
+      <h1 class="logo">
+        <img src="images/icon_orig.png" alt="GitWar" class="logo-icon" />
+        GitWar <span class="version">(0.0.1)</span>
+      </h1>
+    </div>
+    <div class="modal-content"><p>Battle between two GitHub profiles.</p></div>
+    <div class="modal-footer">
+      <div class="flex-container">
+        <div class="flex"><a href="main.html">Let's Begin</a></div>
+      </div>
+    </div>
+  </body>
+</html>

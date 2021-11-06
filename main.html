@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GitWar</title>
+    <style>
+      html,
+      body {
+        font-family: "Open Sans", sans-serif;
+        font-size: 14px;
+        min-height: 180px;
+        width: 400px;
+        margin: 0;
+        padding: 0;
+      }
+      .main-title {
+        font-family: "Menlo", monospace;
+        font-size: 22px;
+        font-weight: bolder;
+        margin: 0;
+        padding: 0px 16px;
+        color: #2f5876;
+      }
+      .main-flex-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .flex-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: left;
+        padding: 10px 22px;
+      }
+      .flex {
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out;
+        width: 120px;
+        padding: 5px;
+      }
+      input {
+        padding: 5px;
+      }
+      button {
+        padding: 5px;
+        width: 80px;
+      }
+      #existerror1, #existerror2, #mandatoryerror1, #mandatoryerror2 {
+          display: none;
+      }
+      .error-flex {
+        opacity: 1;
+        transition: opacity 0.2s ease-in-out;
+        width: 120px;
+      }
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.3s;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        padding: 2px 0px 2px 16px;
+      }
+      .card:hover {
+        box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+      }
+      .card-header {
+        align-items: center;
+        border-bottom: 0.5px solid #dadada;
+        width: 100%;
+      }
+      .logo {
+        padding: 10px;
+      }
+      .logo-icon {
+        vertical-align: text-bottom;
+        margin-right: 10px;
+      }
+      img {
+        width: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2 id="maintitle" class="main-title">Let the battle begin!</h2>
+    <form>
+      <div class="main-flex-container">
+        <div class="flex-container">
+          <div class="flex"><label for="player1">Enter Username1</label></div>
+          <div class="flex">
+            <input
+              type="text"
+              placeholder="GitHub Username1"
+              id="player1"
+              value="smv1999"
+            />
+          </div>
+          <div class="error-flex"><p id="existerror1">Username doesn't exist</p></div>
+          <div class="error-flex"><p id="mandatoryerror1">Please enter a username</p></div>
+          <div class="flex"><label for="player2">Enter Username2</label></div>
+          <div class="flex">
+            <input
+              type="text"
+              placeholder="GitHub Username2"
+              id="player2"
+              value="harshcasper"
+            />
+          </div>
+          <div class="error-flex"><p id="existerror2">Username doesn't exist</p></div>
+          <div class="error-flex"><p id="mandatoryerror2">Please enter a username</p></div>
+        </div>
+        <div class="flex">
+          <button type="button" id="submit">
+            Fight
+          </button>
+        </div>
+      </div>
+    </form>
+
+    <script defer type="text/javascript" src="main.js"></script>
+  </body>
+</html>
