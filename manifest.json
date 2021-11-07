@@ -2,7 +2,7 @@
     "name": "GitWar",
     "manifest_version": 3,
     "version": "0.0.1",
-    "description": "GitWar is a browser extension that allows you to compare GitHub Activity of two profiles.",
+    "description": "GitWar is a browser extension that allows you to compare one GitHub profile with another.",
     "permissions": [
         "activeTab"
     ],
