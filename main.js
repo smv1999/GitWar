@@ -16,10 +16,14 @@ function onFormSubmit() {
           .then((data) => data.json())
           .then((user2Data) => {
             if (user1Data.message && user1Data.message == "Not Found") {
+              document.getElementById("existerror1").innerHTML =
+                "Username " + username1 + " doesn't exist";
               document.getElementById("existerror1").style.display = "block";
               validFlag = false;
             }
             if (user2Data.message && user2Data.message == "Not Found") {
+              document.getElementById("existerror2").innerHTML =
+                "Username " + username2 + " doesn't exist";
               document.getElementById("existerror2").style.display = "block";
               validFlag = false;
             }
@@ -36,9 +40,9 @@ function onFormSubmit() {
                   });
                   html += `
                     <div class="card">
-                    <div class="flex-container">
+                    <div class="local-flex-container">
                         <div class="main-flex-container">
-                            <div class="flex card-header">
+                            <div class="flex-item card-header">
                             <h4 class="logo">
                                 <img src="${user1Data.avatar_url}" alt="${
                     user1Data.login
@@ -48,14 +52,14 @@ function onFormSubmit() {
                             </div>                           
                         </div>
                         <div class="main-flex-container">
-                          <div class="flex card-header">
+                          <div class="flex-item card-header">
                           <h4>
-                            Public Repos: ${user1Data.public_repos}
+                            <b>Public Repos:</b> ${user1Data.public_repos}
                           </h4>
                           </div>
-                          <div class="flex card-header">
+                          <div class="flex-item card-header">
                           <h4>
-                              Score: ${
+                              <b>Score:</b> ${
                                 total_score1 > total_score2
                                   ? total_score1 + " (Winner 🥳)"
                                   : total_score1 + " (Loser 😔)"
@@ -64,14 +68,14 @@ function onFormSubmit() {
                           </div>                           
                       </div>
                         <div class="main-flex-container">
-                            <div class="flex card-header">
+                            <div class="flex-item card-header">
                             <h4>
-                              Followers: ${user1Data.followers}
+                              <b>Followers:</b> ${user1Data.followers}
                           </h4>
                           </div>    
-                          <div class="flex card-header">
+                          <div class="flex-item card-header">
                             <h4>
-                                Following: ${user1Data.following}
+                                <b>Following:</b> ${user1Data.following}
                             </h4>
                             </div>                      
                         </div>
@@ -87,9 +91,9 @@ function onFormSubmit() {
                       });
                       html += `
                             <div class="card">
-                                <div class="flex-container">
+                                <div class="local-flex-container">
                                     <div class="main-flex-container">
-                                        <div class="flex card-header">
+                                        <div class="flex-item card-header">
                                         <h4 class="logo">
                                             <img src="${
                                               user2Data.avatar_url
@@ -101,14 +105,16 @@ function onFormSubmit() {
                                         </div>
                                     </div>
                                     <div class="main-flex-container">
-                                      <div class="flex card-header">
+                                      <div class="flex-item card-header">
                                       <h4>
-                                        Public Repos: ${user2Data.public_repos}
+                                        <b>Public Repos:</b> ${
+                                          user2Data.public_repos
+                                        }
                                       </h4>
                                       </div>
-                                      <div class="flex card-header">
+                                      <div class="flex-item card-header">
                                       <h4>
-                                        Score: ${
+                                        <b>Score:</b> ${
                                           total_score2 > total_score1
                                             ? total_score2 + " (Winner 🥳)"
                                             : total_score2 + " (Loser 😔)"
@@ -117,19 +123,20 @@ function onFormSubmit() {
                                       </div> 
                                   </div>
                                     <div class="main-flex-container">
-                                      <div class="flex card-header">
+                                      <div class="flex-item card-header">
                                       <h4>
-                                        Followers: ${user2Data.followers}
+                                        <b>Followers:</b> ${user2Data.followers}
                                     </h4>
                                     </div>
-                                  <div class="flex card-header">
+                                  <div class="flex-item card-header">
                                     <h4>
-                                        Following: ${user2Data.following}
+                                        <b>Following:</b> ${user2Data.following}
                                     </h4>
                                     </div>
                                 </div>
                                 </div>
                             </div>
+                              <p style="margin-left: 5px;" class="alert alert-info">Stars: 3 points, Forks: 5 points, Followers: 1 point, Public repos: 1 point</p>
                             `;
                       document.body.insertAdjacentHTML("beforeend", html);
                     });
