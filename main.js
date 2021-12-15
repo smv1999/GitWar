@@ -138,7 +138,39 @@ function onFormSubmit() {
                             </div>
                               <p style="margin-left: 5px;" class="alert alert-info">Stars: 3 points, Forks: 5 points, Followers: 1 point, Public repos: 1 point</p>
                             `;
+                      html += `<canvas id="myChart" width="400" height="400"></canvas>`;
                       document.body.insertAdjacentHTML("beforeend", html);
+                      const ctx = document
+                        .getElementById("myChart")
+                        .getContext("2d");
+                      const myChart = new Chart(ctx, {
+                        type: "bar",
+                        data: {
+                          labels: [user1Data.name, user2Data.name],
+                          datasets: [
+                            {
+                              label: "Score",
+                              data: [total_score1, total_score2],
+                              backgroundColor: [
+                                "rgba(255, 99, 132, 0.2)",
+                                "rgba(54, 162, 235, 0.2)",
+                              ],
+                              borderColor: [
+                                "rgba(255, 99, 132, 1)",
+                                "rgba(54, 162, 235, 1)",
+                              ],
+                              borderWidth: 1,
+                            },
+                          ],
+                        },
+                        options: {
+                          scales: {
+                            y: {
+                              beginAtZero: true,
+                            },
+                          },
+                        },
+                      });
                     });
                 });
             }
