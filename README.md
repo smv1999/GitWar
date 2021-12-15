@@ -1,5 +1,7 @@
 ## GitWar
 
+![[object Object]](https://socialify.git.ci/smv1999/GitWar/image?font=Source%20Code%20Pro&forks=1&issues=1&language=1&name=1&owner=1&pattern=Brick%20Wall&pulls=1&stargazers=1&theme=Dark)
+
 GitWar is a browser extension that allows you to compare one GitHub profile with another.
 
 ## Steps to Try it in your Local
