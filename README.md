@@ -24,3 +24,6 @@ GitWar is a browser extension that allows you to compare one GitHub profile with
 
 ## License 
 [MIT License](https://github.com/smv1999/GitWar/blob/main/LICENSE)
+
+## NOTE
+This project is inspired by the Android App created by [Vatsal Kesarwani](https://github.com/plazzy99). Make sure to check it out [here](https://github.com/plazzy99/GitFit).
